@@ -1,0 +1,20 @@
+[project]
+name = "lidom-mlb-api-guide"
+version = "0.1.0"
+description = "Guia en Python y cliente auxiliar para datos LIDOM en MLB Stats API"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+  { name = "Cursor Agent" }
+]
+dependencies = []
+
+[build-system]
+requires = ["setuptools>=80.0.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
