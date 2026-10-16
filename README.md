@@ -212,6 +212,30 @@ ruff check .
 
 ---
 
+## Pre-commit hooks (local)
+
+Puedes dejar validaciones automáticas antes de cada commit con `pre-commit`.
+
+Instalación:
+
+```bash
+python3 -m pip install -e ".[test]"
+pre-commit install
+```
+
+Ejecución manual sobre todo el repo:
+
+```bash
+pre-commit run --all-files
+```
+
+Hooks incluidos:
+
+- `ruff-check`
+- `pytest -q`
+
+---
+
 ## Notas y consideraciones
 
 - Algunos campos de metadatos en live feeds de winter leagues pueden venir como `null` (por ejemplo, campos de liga/deporte en ciertos payloads de `gameData`), así que conviene parsear de forma defensiva.
@@ -220,3 +244,12 @@ ruff check .
 
 ---
 
+## Próximas mejoras recomendadas (Python)
+
+Si luego lo conviertes en una integración más grande:
+
+1. Agregar reintentos y backoff para errores de red.
+2. Implementar caché de respuestas de calendario por fecha.
+3. Normalizar equipos/estadios en modelos tipados (Pydantic/dataclasses).
+4. Agregar argumentos de CLI (`--date`, `--season`, `--json`) para automatización.
+5. Añadir tests con fixtures JSON guardados para estabilidad.
