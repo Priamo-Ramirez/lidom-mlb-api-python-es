@@ -220,12 +220,3 @@ ruff check .
 
 ---
 
-## Próximas mejoras recomendadas (Python)
-
-Si luego lo conviertes en una integración más grande:
-
-1. Agregar reintentos y backoff para errores de red.
-2. Implementar caché de respuestas de calendario por fecha.
-3. Normalizar equipos/estadios en modelos tipados (Pydantic/dataclasses).
-4. Agregar argumentos de CLI (`--date`, `--season`, `--json`) para automatización.
-5. Añadir tests con fixtures JSON guardados para estabilidad.
