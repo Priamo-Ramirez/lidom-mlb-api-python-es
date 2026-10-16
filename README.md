@@ -83,6 +83,7 @@ curl -s "https://statsapi.mlb.com/api/v1.1/game/<gamePk>/feed/live"
 ## Estructura
 
 - `src/lidom_mlb_api/client.py` — cliente reutilizable de la API
+- `src/lidom_mlb_api/cli.py` — CLI (`lidom-api`) para consultar juegos y equipos
 - `examples/today_games.py` — ejemplo ejecutable para imprimir los juegos de hoy en LIDOM
 
 ## Ejecutar ejemplo
@@ -114,6 +115,63 @@ games = api.summarize_games(schedule)
 
 for game in games:
     print(game.away_team, "@", game.home_team, game.status, game.game_pk)
+```
+
+---
+
+## CLI rápido
+
+Después de instalar el paquete en tu entorno (`pip install -e .`), puedes usar:
+
+```bash
+lidom-api today
+lidom-api games --date 2026-10-16
+lidom-api teams --season 2026
+```
+
+Salida en JSON:
+
+```bash
+lidom-api today --json
+lidom-api teams --season 2026 --json
+```
+
+También puedes ejecutarlo como módulo:
+
+```bash
+PYTHONPATH=src python3 -m lidom_mlb_api today
+```
+
+---
+
+## Modelos tipados incluidos
+
+El cliente ya incluye modelos dataclass para estructurar datos:
+
+- `LidomGameSummary`
+- `LidomScheduleDay`
+- `LidomTeamSummary`
+
+Helpers de parseo:
+
+- `parse_schedule_day(payload)` → `LidomScheduleDay`
+- `parse_teams(payload)` → `list[LidomTeamSummary]`
+
+---
+
+## Robustez de red (reintentos y backoff)
+
+`LidomStatsApi` ahora aplica reintentos automáticos con backoff exponencial para errores transitorios.
+
+Defaults:
+- `max_retries=3`
+- `backoff_seconds=1.0`
+- Reintenta en `429`, `500`, `502`, `503`, `504`, y errores de red (`URLError`).
+
+Puedes ajustar estos valores al crear el cliente:
+
+```python
+api = LidomStatsApi(max_retries=5, backoff_seconds=0.5, timeout_seconds=20)
 ```
 
 ---

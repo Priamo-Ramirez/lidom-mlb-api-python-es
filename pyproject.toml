@@ -9,6 +9,9 @@ authors = [
 ]
 dependencies = []
 
+[project.scripts]
+lidom-api = "lidom_mlb_api.cli:main"
+
 [build-system]
 requires = ["setuptools>=80.0.0"]
 build-backend = "setuptools.build_meta"
