@@ -1,0 +1,18 @@
+{
+  "teams": [
+    {
+      "id": 672,
+      "name": "Tigres del Licey",
+      "venue": {
+        "name": "Estadio Quisqueya Juan Marichal"
+      }
+    },
+    {
+      "id": 667,
+      "name": "Aguilas Cibaenas",
+      "venue": {
+        "name": "Estadio Cibao"
+      }
+    }
+  ]
+}

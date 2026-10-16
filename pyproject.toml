@@ -9,6 +9,11 @@ authors = [
 ]
 dependencies = []
 
+[project.optional-dependencies]
+test = [
+  "pytest==9.1.1",
+]
+
 [project.scripts]
 lidom-api = "lidom_mlb_api.cli:main"
 
@@ -21,3 +26,6 @@ package-dir = { "" = "src" }
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
