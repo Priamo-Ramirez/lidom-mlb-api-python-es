@@ -4,11 +4,10 @@ import json
 from pathlib import Path
 from urllib.error import URLError
 
-import lidom_mlb_api.client as client_module
 import pytest
 
+import lidom_mlb_api.client as client_module
 from lidom_mlb_api import LidomStatsApi
-
 
 FIXTURES_DIR = Path(__file__).parent / "fixtures"
 
@@ -51,7 +50,7 @@ def test_get_json_retries_and_succeeds_after_transient_error(monkeypatch: pytest
     sleep_calls: list[float] = []
 
     class FakeResponse:
-        def __enter__(self) -> "FakeResponse":
+        def __enter__(self) -> FakeResponse:
             return self
 
         def __exit__(self, exc_type, exc, tb) -> bool:

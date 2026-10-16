@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import json
+import time
 from dataclasses import dataclass
 from datetime import datetime
 from typing import Any
@@ -9,8 +11,6 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
 from urllib.request import urlopen
 from zoneinfo import ZoneInfo
-import json
-import time
 
 BASE_URL = "https://statsapi.mlb.com/api/v1"
 WINTER_LEAGUES_SPORT_ID = 17

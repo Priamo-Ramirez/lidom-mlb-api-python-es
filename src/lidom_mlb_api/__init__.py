@@ -9,9 +9,9 @@ from .client import (
 )
 
 __all__ = [
-    "LidomStatsApi",
     "LidomGameSummary",
-    "LidomTeamSummary",
     "LidomScheduleDay",
+    "LidomStatsApi",
+    "LidomTeamSummary",
     "get_today_in_dominican_republic",
 ]

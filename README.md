@@ -1,5 +1,7 @@
 # Guía de MLB Stats API (Liga Dominicana de Béisbol / LIDOM)
 
+[![CI](https://github.com/Priamo-Ramirez/lidom-mlb-api-python-es/actions/workflows/ci.yml/badge.svg)](https://github.com/Priamo-Ramirez/lidom-mlb-api-python-es/actions/workflows/ci.yml)
+
 Documentación y ejemplos con enfoque en **Python** para consultar datos de **LIDOM** en la MLB Stats API pública.
 
 ## ¿Está disponible LIDOM en la API?
@@ -172,6 +174,40 @@ Puedes ajustar estos valores al crear el cliente:
 
 ```python
 api = LidomStatsApi(max_retries=5, backoff_seconds=0.5, timeout_seconds=20)
+```
+
+---
+
+## Tests automáticos con fixtures
+
+El proyecto incluye pruebas con `pytest` y fixtures JSON en `tests/fixtures/` para:
+
+- parseo de calendario con juegos y sin juegos,
+- parseo de equipos,
+- reintentos de red con backoff,
+- salida del CLI en modo JSON y texto.
+
+Ejecutar tests localmente:
+
+```bash
+python3 -m pip install -e ".[test]"
+pytest -q
+```
+
+---
+
+## CI (GitHub Actions)
+
+Se incluye workflow en `.github/workflows/ci.yml` que ejecuta los tests en:
+
+- Python 3.10
+- Python 3.11
+- Python 3.12
+
+Además, el workflow ejecuta lint con Ruff antes de correr los tests:
+
+```bash
+ruff check .
 ```
 
 ---
