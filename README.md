@@ -2,11 +2,9 @@
 
 [![CI](https://github.com/Priamo-Ramirez/lidom-mlb-api-python-es/actions/workflows/ci.yml/badge.svg)](https://github.com/Priamo-Ramirez/lidom-mlb-api-python-es/actions/workflows/ci.yml)
 
-Documentación y ejemplos con enfoque en **Python** para consultar datos de **LIDOM** en la MLB Stats API pública.
+Referencia técnica y ejemplos en **Python** para consultar **LIDOM** en la MLB Stats API pública.
 
-## ¿Está disponible LIDOM en la API?
-
-Sí. LIDOM está disponible en la MLB Stats API.
+## Identificadores de LIDOM en la API
 
 - Deporte Winter Leagues: `sportId=17`
 - Liga Dominicana (LIDOM): `leagueId=131`
@@ -21,7 +19,7 @@ GET /api/v1/schedule?sportId=17&leagueId=131&date=YYYY-MM-DD
 
 ---
 
-## Mapa rápido de endpoints para LIDOM
+## Referencia de endpoints para LIDOM
 
 URL base:
 
@@ -121,7 +119,7 @@ for game in games:
 
 ---
 
-## CLI rápido
+## CLI
 
 Después de instalar el paquete en tu entorno (`pip install -e .`), puedes usar:
 
@@ -146,7 +144,7 @@ PYTHONPATH=src python3 -m lidom_mlb_api today
 
 ---
 
-## Modelos tipados incluidos
+## Modelos tipados
 
 El cliente ya incluye modelos dataclass para estructurar datos:
 
@@ -161,16 +159,16 @@ Helpers de parseo:
 
 ---
 
-## Robustez de red (reintentos y backoff)
+## Configuración de reintentos y backoff
 
-`LidomStatsApi` ahora aplica reintentos automáticos con backoff exponencial para errores transitorios.
+`LidomStatsApi` aplica reintentos automáticos con backoff exponencial para errores transitorios.
 
 Defaults:
 - `max_retries=3`
 - `backoff_seconds=1.0`
 - Reintenta en `429`, `500`, `502`, `503`, `504`, y errores de red (`URLError`).
 
-Puedes ajustar estos valores al crear el cliente:
+Configuración del cliente:
 
 ```python
 api = LidomStatsApi(max_retries=5, backoff_seconds=0.5, timeout_seconds=20)
@@ -178,7 +176,7 @@ api = LidomStatsApi(max_retries=5, backoff_seconds=0.5, timeout_seconds=20)
 
 ---
 
-## Tests automáticos con fixtures
+## Pruebas con fixtures
 
 El proyecto incluye pruebas con `pytest` y fixtures JSON en `tests/fixtures/` para:
 
@@ -212,9 +210,7 @@ ruff check .
 
 ---
 
-## Pre-commit hooks (local)
-
-Puedes dejar validaciones automáticas antes de cada commit con `pre-commit`.
+## Pre-commit
 
 Instalación:
 
@@ -256,20 +252,10 @@ feat(cli): agregar comando today
 
 ---
 
-## Notas y consideraciones
+## Limitaciones conocidas
 
-- Algunos campos de metadatos en live feeds de winter leagues pueden venir como `null` (por ejemplo, campos de liga/deporte en ciertos payloads de `gameData`), así que conviene parsear de forma defensiva.
+- Algunos campos de metadatos en live feeds de winter leagues pueden venir como `null` (por ejemplo, campos de liga/deporte en ciertos payloads de `gameData`), por lo que el parseo debe ser defensivo.
 - Al inicio de temporada, `standings` puede devolver registros vacíos aunque ya exista calendario.
 - Los estados del juego (`Scheduled`, `Pre-Game`, `In Progress`, `Final`) están en `status.detailedState`.
 
 ---
-
-## Próximas mejoras recomendadas (Python)
-
-Si luego lo conviertes en una integración más grande:
-
-1. Agregar reintentos y backoff para errores de red.
-2. Implementar caché de respuestas de calendario por fecha.
-3. Normalizar equipos/estadios en modelos tipados (Pydantic/dataclasses).
-4. Agregar argumentos de CLI (`--date`, `--season`, `--json`) para automatización.
-5. Añadir tests con fixtures JSON guardados para estabilidad.
