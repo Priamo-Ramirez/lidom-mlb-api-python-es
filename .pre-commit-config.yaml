@@ -12,3 +12,9 @@ repos:
         language: system
         pass_filenames: false
         types_or: [python]
+
+      - id: conventional-commit-msg
+        name: conventional-commit-msg
+        entry: python3 scripts/check_commit_msg.py
+        language: system
+        stages: [commit-msg]

@@ -221,6 +221,7 @@ Instalación:
 ```bash
 python3 -m pip install -e ".[test]"
 pre-commit install
+pre-commit install --hook-type commit-msg
 ```
 
 Ejecución manual sobre todo el repo:
@@ -233,6 +234,25 @@ Hooks incluidos:
 
 - `ruff-check`
 - `pytest -q`
+- `conventional-commit-msg` (etapa `commit-msg`)
+
+Formato esperado para commits:
+
+```text
+<tipo>(<scope opcional>): <descripción>
+```
+
+Tipos permitidos:
+
+```text
+feat, fix, docs, style, refactor, perf, test, build, ci, chore, revert
+```
+
+Ejemplo:
+
+```text
+feat(cli): agregar comando today
+```
 
 ---
 
