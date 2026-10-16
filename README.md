@@ -10,7 +10,9 @@
   <a href="https://github.com/Priamo-Ramirez/lidom-mlb-api-python-es/actions/workflows/ci.yml">
     <img src="https://github.com/Priamo-Ramirez/lidom-mlb-api-python-es/actions/workflows/ci.yml/badge.svg" alt="CI" />
   </a>
-  <img src="https://img.shields.io/github/v/release/Priamo-Ramirez/lidom-mlb-api-python-es?display_name=tag" alt="Release" />
+  <a href="https://github.com/Priamo-Ramirez/lidom-mlb-api-python-es/releases/latest">
+    <img src="https://img.shields.io/github/v/release/Priamo-Ramirez/lidom-mlb-api-python-es?display_name=tag" alt="Release" />
+  </a>
   <img src="https://img.shields.io/badge/python-3.10%2B-blue.svg" alt="Python 3.10+" />
   <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="MIT License" />
   <img src="https://img.shields.io/badge/API-MLB%20Stats-1f4f99.svg" alt="MLB Stats API" />
@@ -251,7 +253,7 @@ ruff check .
 Instalación:
 
 ```bash
-python3 -m pip install -e ".[test]"
+python3 -m pip install -e ".[dev]"
 pre-commit install
 pre-commit install --hook-type commit-msg
 ```
