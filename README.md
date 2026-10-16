@@ -8,12 +8,14 @@
 
 <p align="center">
   <a href="https://github.com/Priamo-Ramirez/lidom-mlb-api-python-es/actions/workflows/ci.yml">
-    <img src="https://github.com/Priamo-Ramirez/lidom-mlb-api-python-es/actions/workflows/ci.yml/badge.svg" alt="CI" />
+    <img src="https://github.com/Priamo-Ramirez/lidom-mlb-api-python-es/actions/workflows/ci.yml/badge.svg?branch=main" alt="CI (main)" />
   </a>
-  <a href="https://github.com/Priamo-Ramirez/lidom-mlb-api-python-es/releases/latest">
-    <img src="https://img.shields.io/github/v/release/Priamo-Ramirez/lidom-mlb-api-python-es?display_name=tag" alt="Release" />
+  <a href="https://github.com/Priamo-Ramirez/lidom-mlb-api-python-es/releases">
+    <img src="https://img.shields.io/github/v/tag/Priamo-Ramirez/lidom-mlb-api-python-es?label=release&sort=semver" alt="Latest release version" />
   </a>
-  <img src="https://img.shields.io/badge/python-3.10%2B-blue.svg" alt="Python 3.10+" />
+  <a href="https://www.python.org/downloads/">
+    <img src="https://img.shields.io/badge/python-3.10%2B-blue.svg" alt="Python 3.10+" />
+  </a>
   <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="MIT License" />
   <img src="https://img.shields.io/badge/API-MLB%20Stats-1f4f99.svg" alt="MLB Stats API" />
 </p>
