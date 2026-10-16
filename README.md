@@ -1,15 +1,51 @@
 # Guía de MLB Stats API (Liga Dominicana de Béisbol / LIDOM)
 
-[![CI](https://github.com/Priamo-Ramirez/lidom-mlb-api-python-es/actions/workflows/ci.yml/badge.svg)](https://github.com/Priamo-Ramirez/lidom-mlb-api-python-es/actions/workflows/ci.yml)
+<p align="center">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Major_League_Baseball_logo.svg" alt="MLB" height="64" />
+  &nbsp;&nbsp;&nbsp;
+  <img src="https://lidom.com/especiales/countdown-2627/Logo-Lidom.svg" alt="LIDOM" height="64" />
+</p>
+
+<p align="center">
+  <a href="https://github.com/Priamo-Ramirez/lidom-mlb-api-python-es/actions/workflows/ci.yml">
+    <img src="https://github.com/Priamo-Ramirez/lidom-mlb-api-python-es/actions/workflows/ci.yml/badge.svg" alt="CI" />
+  </a>
+  <img src="https://img.shields.io/github/v/release/Priamo-Ramirez/lidom-mlb-api-python-es?display_name=tag" alt="Release" />
+  <img src="https://img.shields.io/badge/python-3.10%2B-blue.svg" alt="Python 3.10+" />
+  <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="MIT License" />
+  <img src="https://img.shields.io/badge/API-MLB%20Stats-1f4f99.svg" alt="MLB Stats API" />
+</p>
 
 Referencia técnica y ejemplos en **Python** para consultar **LIDOM** en la MLB Stats API pública.
+
+## Tabla de contenido
+
+- [Características](#características)
+- [Identificadores de LIDOM en la API](#identificadores-de-lidom-en-la-api)
+- [Referencia de endpoints para LIDOM](#referencia-de-endpoints-para-lidom)
+- [Uso en Python (este repositorio)](#uso-en-python-este-repositorio)
+- [CLI](#cli)
+- [Modelos tipados](#modelos-tipados)
+- [Configuración de reintentos y backoff](#configuración-de-reintentos-y-backoff)
+- [Pruebas con fixtures](#pruebas-con-fixtures)
+- [CI (GitHub Actions)](#ci-github-actions)
+- [Pre-commit](#pre-commit)
+- [Limitaciones conocidas](#limitaciones-conocidas)
+
+## Características
+
+- Cobertura de endpoints esenciales para LIDOM (schedule, teams y game feed).
+- Cliente Python reutilizable para integraciones.
+- CLI para consultas rápidas (`today`, `games`, `teams`).
+- Modelos tipados para consumo consistente de datos.
+- Reintentos automáticos con backoff ante errores transitorios de red/API.
 
 ## Identificadores de LIDOM en la API
 
 - Deporte Winter Leagues: `sportId=17`
 - Liga Dominicana (LIDOM): `leagueId=131`
 
-La consulta principal del calendario es:
+Consulta principal del calendario:
 
 ```text
 GET /api/v1/schedule?sportId=17&leagueId=131&date=YYYY-MM-DD
